@@ -573,7 +573,7 @@ static PyObject *GetSqlServerTimestampOffset(Cursor *cur, Py_ssize_t iCol)
         Py_RETURN_NONE;
 
     int micros = (int)(value.fraction / 1000); // nanos --> micros
-    return PyTime_FromTime(value.hour, value.minute, value.second, micros);
+    return PyDateTime_FromDateAndTime(value.year, value.month, value.day, value.hour, value.minute, value.second, micros);
 }
 
 static PyObject *GetUUID(Cursor *cur, Py_ssize_t iCol)
